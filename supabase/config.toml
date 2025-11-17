@@ -1,0 +1,4 @@
+project_id = "srrqshemsftjirhuhtlc"
+
+[functions.generate-exercises]
+verify_jwt = true
