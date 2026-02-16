@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Duolingo-style Design System */
+
+@layer base {
+  :root {
+    /* Dark mode by default - Negro cálido */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Dorado vibrante */
+    --primary: 45 100% 52%;
+    --primary-foreground: 0 0% 7%;
+    --primary-glow: 43 100% 45%;
+
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 44%;
+
+    /* Rojo suave para ranking/alertas */
+    --accent: 4 82% 63%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 4 82% 63%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 45 100% 52%;
+
+    --radius: 1rem;
+
+    /* Éxito */
+    --success: 123 38% 57%;
+    /* Info */
+    --info: 232 36% 64%;
+
+    /* Hover primario */
+    --primary-hover: 43 90% 44%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(45 100% 52%), hsl(43 100% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 14%), hsl(0 0% 12%));
+    --gradient-hero: linear-gradient(135deg, #1E1E1E 0%, #2A1F14 100%);
+    --shadow-glow: 0 4px 20px hsl(45 100% 52% / 0.15);
+    --shadow-elegant: 0 10px 30px -10px hsl(0 0% 0% / 0.6);
+
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 45 100% 52%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 45 100% 52%;
+  }
+
+  .light {
+    /* Modo claro - Marfil cálido */
+    --background: 30 33% 96%;
+    --foreground: 0 0% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+
+    /* Dorado moderno */
+    --primary: 44 100% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 42 100% 43%;
+
+    --secondary: 30 15% 88%;
+    --secondary-foreground: 0 0% 17%;
+
+    --muted: 30 12% 92%;
+    --muted-foreground: 0 0% 42%;
+
+    /* Rojo controlado para ranking */
+    --accent: 0 76% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 76% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 28 14% 87%;
+    --input: 28 14% 87%;
+    --ring: 44 100% 48%;
+
+    /* Éxito */
+    --success: 122 39% 49%;
+    /* Info */
+    --info: 232 36% 56%;
+
+    /* Hover primario */
+    --primary-hover: 43 90% 47%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(44 100% 48%), hsl(42 100% 43%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(30 33% 97%));
+    --gradient-hero: linear-gradient(135deg, hsl(30 33% 96%) 0%, hsl(40 30% 92%) 100%);
+    --shadow-glow: 0 4px 20px hsl(44 100% 48% / 0.2);
+    --shadow-elegant: 0 10px 30px -10px hsl(0 0% 17% / 0.08);
+  }
+
+  .dark {
+    /* Dark mode explicit */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 45 100% 52%;
+    --primary-foreground: 0 0% 7%;
+    --primary-glow: 43 100% 45%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 44%;
+    --accent: 4 82% 63%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 4 82% 63%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 45 100% 52%;
+    /* Hover primario */
+    --primary-hover: 43 90% 44%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(45 100% 52%), hsl(43 100% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 14%), hsl(0 0% 12%));
+    --gradient-hero: linear-gradient(135deg, #1E1E1E 0%, #2A1F14 100%);
+    --shadow-glow: 0 4px 20px hsl(45 100% 52% / 0.15);
+    --shadow-elegant: 0 10px 30px -10px hsl(0 0% 0% / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+  }
+
+  /* Smooth dark/light mode transition */
+  html, body, .bg-background, .bg-card {
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+}
+
+/* German-inspired button animations */
+@layer components {
+  .btn-german {
+    @apply bg-primary text-primary-foreground font-bold py-4 px-8 rounded-2xl transition-all duration-200;
+    @apply hover:brightness-110 active:scale-95;
+    box-shadow: 0 4px 0 hsl(43 100% 38%);
+  }
+  
+  .btn-german:active {
+    box-shadow: 0 2px 0 hsl(43 100% 38%);
+    transform: translateY(2px);
+  }
+  
+  .btn-secondary-german {
+    @apply bg-secondary text-secondary-foreground font-bold py-4 px-8 rounded-2xl transition-all duration-200;
+    @apply hover:bg-secondary/80 active:scale-95;
+  }
+
+  /* Interactive button effects: hover lift + click compress */
+  .btn-interactive {
+    @apply transition-all duration-200;
+  }
+  .btn-interactive:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px hsl(var(--primary) / 0.25);
+  }
+  .btn-interactive:active:not(:disabled) {
+    transform: scale(0.97) translateY(0);
+    box-shadow: none;
+  }
+  .btn-interactive:disabled {
+    @apply opacity-50;
+    filter: saturate(0.5);
+  }
+
+  /* Option button with interactive effects */
+  .btn-option {
+    @apply transition-all duration-200;
+  }
+  .btn-option:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px hsl(var(--foreground) / 0.08);
+  }
+  .btn-option:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Shake animation for wrong answers */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-3px); }
+    40% { transform: translateX(3px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+  }
+
+  /* Bounce confirmation for correct answers */
+  @keyframes bounce-confirm {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.05); }
+    60% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+  }
+
+  /* Progress bar glow on update */
+  @keyframes progress-glow {
+    0% { box-shadow: none; }
+    50% { box-shadow: 0 0 12px hsl(var(--primary) / 0.5); }
+    100% { box-shadow: none; }
+  }
+
+  /* Audio pulse rings */
+  @keyframes audio-pulse {
+    0% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 16px hsl(var(--primary) / 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+    }
+  }
+
+  /* Gold confetti particle burst */
+  @keyframes confetti-burst {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  /* Count up number pulse */
+  @keyframes count-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  .animate-shake {
+    animation: shake 0.4s ease-out;
+  }
+
+  .animate-bounce-confirm {
+    animation: bounce-confirm 0.5s ease-out;
+  }
+
+  .animate-progress-glow {
+    animation: progress-glow 0.6s ease-out;
+  }
+
+  .animate-audio-pulse {
+    animation: audio-pulse 1.2s ease-out infinite;
+  }
+
+  .animate-count-pulse {
+    animation: count-pulse 0.4s ease-out;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
