@@ -328,7 +328,7 @@ const Game = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-2xl">Cargando ejercicios...</p>
+        <p className="text-2xl">{t('common.loading')}</p>
       </div>
     );
   }
