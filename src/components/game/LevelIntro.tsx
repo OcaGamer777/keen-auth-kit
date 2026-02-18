@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface LevelIntroProps {
   level: number;
@@ -6,6 +7,8 @@ interface LevelIntroProps {
 }
 
 export const LevelIntro = ({ level, onComplete }: LevelIntroProps) => {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       className="fixed inset-0 z-[70] flex items-center justify-center bg-background"
@@ -40,7 +43,7 @@ export const LevelIntro = ({ level, onComplete }: LevelIntroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.3 }}
         >
-          Nivel
+          {t('game.level')}
         </motion.span>
         <motion.span
           className="text-8xl sm:text-9xl font-black text-primary"
