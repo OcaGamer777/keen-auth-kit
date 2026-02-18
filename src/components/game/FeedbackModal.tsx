@@ -117,7 +117,7 @@ export const FeedbackModal = ({
           <div className="flex justify-end">
             <Button 
               onClick={onContinue}
-              className="btn-duolingo btn-interactive min-w-[200px] text-lg"
+              className="btn-aprender btn-interactive min-w-[200px] text-lg"
             >
               Intentar de nuevo
             </Button>
@@ -192,7 +192,7 @@ export const FeedbackModal = ({
           )}
           <Button 
             onClick={onContinue}
-            className="btn-duolingo btn-interactive w-full md:min-w-[200px] text-lg"
+            className="btn-aprender btn-interactive w-full md:min-w-[200px] text-lg"
           >
             {t('feedback.continue')}
           </Button>

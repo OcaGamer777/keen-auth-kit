@@ -189,7 +189,7 @@ export default function Profile() {
             <Button
               onClick={handleChangePassword}
               disabled={changingPassword || !newPassword || !confirmPassword}
-              className="btn-duolingo w-full"
+              className="btn-aprender w-full"
             >
               {changingPassword ? `${t('common.loading')}` : t('profile.updatePassword')}
             </Button>

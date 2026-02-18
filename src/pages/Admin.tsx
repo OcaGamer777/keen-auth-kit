@@ -860,7 +860,7 @@ export default function Admin() {
                 <Button
                   onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="btn-duolingo w-full"
+                  className="btn-aprender w-full"
                 >
                   {isGenerating ? 'Generando...' : 'Generar Ejercicios'}
                 </Button>
@@ -873,7 +873,7 @@ export default function Admin() {
             <Card className="p-6 bg-card/50 backdrop-blur-xl">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold">Temas Disponibles</h2>
-                <Button onClick={() => setIsCreatingTopic(true)} className="btn-duolingo">
+                <Button onClick={() => setIsCreatingTopic(true)} className="btn-aprender">
                   + Crear Tema
                 </Button>
               </div>
@@ -1043,7 +1043,7 @@ export default function Admin() {
                                 </div>
                               </div>
                               
-                              <Button onClick={() => handleUpdateProfile(editingProfile as any)} className="w-full btn-duolingo">
+                              <Button onClick={() => handleUpdateProfile(editingProfile as any)} className="w-full btn-aprender">
                                 Guardar Cambios
                               </Button>
                             </div>
@@ -1142,7 +1142,7 @@ export default function Admin() {
                   />
                 </div>
 
-                <Button onClick={saveAppConfig} className="w-full btn-duolingo" disabled={configLoading}>
+                <Button onClick={saveAppConfig} className="w-full btn-aprender" disabled={configLoading}>
                   {configLoading ? 'Guardando...' : 'Guardar Configuración de Aplicación'}
                 </Button>
               </div>
@@ -1212,7 +1212,7 @@ export default function Admin() {
                   </div>
                 </div>
 
-                <Button onClick={saveTtsSettings} className="w-full btn-duolingo">
+                <Button onClick={saveTtsSettings} className="w-full btn-aprender">
                   Guardar Configuración TTS
                 </Button>
               </div>
@@ -1271,7 +1271,7 @@ export default function Admin() {
                 </p>
               </div>
               <div className="flex gap-2">
-                <Button onClick={handleCreateTopic} className="flex-1 btn-duolingo">
+                <Button onClick={handleCreateTopic} className="flex-1 btn-aprender">
                   Crear Tema
                 </Button>
                 <Button onClick={() => {
@@ -1350,7 +1350,7 @@ export default function Admin() {
                     onCheckedChange={(checked) => setEditingTopic({...editingTopic, is_visible: checked})}
                   />
                 </div>
-                <Button onClick={() => handleUpdateTopic(editingTopic)} className="w-full btn-duolingo">
+                <Button onClick={() => handleUpdateTopic(editingTopic)} className="w-full btn-aprender">
                   Guardar Cambios
                 </Button>
               </div>
