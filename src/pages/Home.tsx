@@ -134,7 +134,7 @@ export default function Home() {
             </div>
             <Button
               onClick={() => navigate(`/levels${getTopicParam()}`)}
-              className="btn-duolingo text-xl py-6 px-12"
+              className="btn-aprender text-xl py-6 px-12"
               size="lg"
             >
               {t('home.levels')}
