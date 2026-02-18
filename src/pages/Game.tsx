@@ -113,17 +113,41 @@ const Game = () => {
         return;
       }
 
-      const bonusTypes = ['FREE_WRITING'];
-      const regularExercises = data.filter(ex => !bonusTypes.includes(ex.type));
-      const shuffled = shuffleAvoidingConsecutiveTypes(regularExercises).slice(0, 10);
-      
-      const bonusExercises = data.filter(ex => bonusTypes.includes(ex.type));
-      if (bonusExercises.length > 0) {
-        const randomBonus = bonusExercises[Math.floor(Math.random() * bonusExercises.length)];
-        shuffled.push(randomBonus);
-      }
-      
-      setExercises(shuffled);
+      // Types for slots 1-7
+      const coreTypes: Exercise['type'][] = ['FILL_IN_THE_BLANK', 'IDENTIFY_THE_WORD', 'LISTENING'];
+      const coreExercises = data.filter(ex => coreTypes.includes(ex.type));
+      const first7 = shuffleAvoidingConsecutiveTypes(coreExercises).slice(0, 7);
+
+      // Helper: pick one exercise of a type, or fallback to a random core-type exercise
+      const pickByType = (type: Exercise['type']) => {
+        const pool = data.filter(ex => ex.type === type && !selected.has(ex.id));
+        if (pool.length > 0) return pool[Math.floor(Math.random() * pool.length)];
+        // Fallback: random core-type exercise not yet selected
+        const fallback = data.filter(ex => coreTypes.includes(ex.type) && !selected.has(ex.id));
+        if (fallback.length > 0) return fallback[Math.floor(Math.random() * fallback.length)];
+        return null;
+      };
+
+      const selected = new Set(first7.map(ex => ex.id));
+
+      const slot8 = pickByType('WORD_SEARCH');
+      if (slot8) selected.add(slot8.id);
+      const slot9 = pickByType('FILL_IN_THE_BLANK_WRITING');
+      if (slot9) selected.add(slot9.id);
+      const slot10 = pickByType('WHEEL_OF_FORTUNE');
+      if (slot10) selected.add(slot10.id);
+      const slot11 = pickByType('FREE_WRITING');
+      if (slot11) selected.add(slot11.id);
+
+      const finalExercises: Exercise[] = [
+        ...first7,
+        ...(slot8 ? [slot8] : []),
+        ...(slot9 ? [slot9] : []),
+        ...(slot10 ? [slot10] : []),
+        ...(slot11 ? [slot11] : []),
+      ];
+
+      setExercises(finalExercises);
     } catch (error) {
       console.error('Error loading exercises:', error);
       toast({
