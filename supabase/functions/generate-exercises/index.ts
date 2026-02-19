@@ -285,9 +285,10 @@ Deno.serve(async (req) => {
       exerciseTypeInstructions += `\n\nREMEMBER: ALL ${count} exercises must be type: "${type}". Do not create any other type.`;
     } else {
       // Generate mixed types
-      exerciseTypeInstructions = `Create ${count} diverse exercises following these rules:
+      exerciseTypeInstructions = `Create ${count} diverse exercises following these rules and distribution:
 
 1. FILL_IN_THE_BLANK:
+   - Create ${(count-4*Math.trunc(count / 10))/3} exercises of this type
    - statement: German sentence with ___ where word is missing. MUY IMPORTANTE: esta frase debe ser siempre en alemán.
    - correct_answer: the missing German word
    - incorrect_answer_1/2/3: plausible wrong German words
@@ -296,11 +297,13 @@ Deno.serve(async (req) => {
    - word_translations: REQUIRED - JSON object with contextual Spanish translations for EACH German word in the statement. The key is the German word (lowercase, without punctuation), the value is its Spanish translation considering the sentence context.
 
 2. FILL_IN_THE_BLANK_WRITING:
+   - Create ${Math.trunc(count / 10)} exercises of this type
    - statement: German sentence with ___ where word is missing. MUY IMPORTANTE: esta frase debe ser siempre en alemán.
    - correct_answer: the missing German word
    - word_translations: REQUIRED - JSON object with contextual Spanish translations for EACH German word in the statement. The key is the German word (lowercase, without punctuation), the value is its Spanish translation considering the sentence context.
 
 3. LISTENING:
+   - Create ${(count-4*Math.trunc(count / 10))/3} exercises of this type
    - statement: "Escucha la palabra y selecciona la traducción correcta"
    - german_word: a German word
    - correct_answer: Spanish translation
@@ -311,6 +314,7 @@ Deno.serve(async (req) => {
    - word_translations: must be null
 
 4. IDENTIFY_THE_WORD (ONLY for words/expressions that can be represented by an emoji):
+   - Create ${count-(4*Math.trunc(count / 10)-2*((count-4*Math.trunc(count / 10))/3)} exercises of this type
    - emoji: a single emoji (REQUIRED, must be representative of the word)
    - statement: "¿Qué es esto?"
    - correct_answer: German word for the emoji
@@ -322,6 +326,7 @@ Deno.serve(async (req) => {
    - word_translations: must be null
 
 5. WHEEL_OF_FORTUNE:
+   - Create ${Math.trunc(count / 10)} exercises of this type
    - statement: German phrase or word to guess
    - correct_answer: same as statement
    - spanish_translation: Spanish translation of the German phrase/word (REQUIRED)
@@ -330,6 +335,7 @@ Deno.serve(async (req) => {
    - word_translations: must be null
 
 6. FREE_WRITING:
+   - Create ${Math.trunc(count / 10)} exercises of this type
    - statement: Detailed writing task in Spanish describing what the student should write about
    - correct_answer: "N/A" (this is a free writing exercise, no single correct answer)
    - All incorrect_answer fields must be null
@@ -338,6 +344,7 @@ Deno.serve(async (req) => {
    - word_translations: must be null
 
 7. WORD_SEARCH:
+   - Create ${Math.trunc(count / 10)} exercises of this type
    - statement: German description of the word to find
    - correct_answer: german word to find
    - spanish_translation: Spanish translation of the German word to find (REQUIRED)
@@ -353,15 +360,16 @@ Mix the exercise types.`;
       A2: 'nivel elemental (vocabulario cotidiano, pasado simple, futuro básico)',
       B1: 'nivel intermedio (conversaciones complejas, subjuntivo, vocabulario amplio)',
       B2: 'nivel intermedio-avanzado (textos complejos, todos los tiempos verbales, expresiones idiomáticas)',
-      C1: 'nivel avanzado (textos especializados, matices lingüísticos, vocabulario técnico)',
-      C2: 'nivel maestría (comprensión total, expresiones nativas, vocabulario completo)',
+      C1: 'nivel intermedio-avanzado en alemán (textos complejos, todos los tiempos verbales, refranes, frases hechas, expresiones coloquiales)',
+      C2: 'nivel avanzado (comprensión total, expresiones nativas, vocabulario completo, refranes, frases hechas, expresiones coloquiales)',
     };
 
     const prompt = `Eres un experto en crear ejercicios de alemán para hispanohablantes en nivel ${levelName} (${levelDescriptions[levelName as keyof typeof levelDescriptions]}).
 
 IMPORTANTE - REQUISITOS DEL NIVEL ${levelName}:
-- Crea ejercicios apropiados ESPECÍFICAMENTE para nivel ${levelName} según el Marco Común Europeo de Referencia (CEFR)
+- Crea ejercicios apropiados ESPECÍFICAMENTE para nivel ${levelName} 
 - El vocabulario, gramática y complejidad deben ser EXACTAMENTE del nivel ${levelName}
+- Los ejercicios de selección de respuesta, sólo la respuesta correcta debe ser gramaticalmente correcta. Las otras respuestas deben ser gramaticalmente incorrectas (no sólo descartarlas por el contexto o el tema de la lección)
 - NO uses vocabulario o estructuras de niveles superiores o inferiores
 - Los enunciados en los niveles A1,A2,B1 y B2 deben estar en español. Los enunciados de los niveles C1 y C2 en alemán.
 - Los ejercicios no deben requirir ningún contexto para poder resolverse. Explica al alumno las respuestas incorrectas si, por ejemplo, el género no coincide con la declinación, etc. pero nunca debería hacerse referencia a ningún contexto fuera de la frase o pregunta formulada.
@@ -370,7 +378,6 @@ TEMA ESPECÍFICO: ${topic}
 DESCRIPCIÓN DEL TEMA:\n${topicDescription}
 IMPORTANTE: Usa esta descripción como guía para crear ejercicios relevantes y específicos a este tema:
 - TODOS los ejercicios deben estar relacionados con los conceptos explicados en la descripción del tema "${topic}"
-- Prioritariamente utiliza frases, expresiones y vocabulario entre los que se mencionan en los ejemplos de la descripción del tema "${topic}"
 
 Número de ejercicios a crear: ${count}
 
