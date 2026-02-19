@@ -95,6 +95,12 @@ const translations: Record<Language, Record<string, string>> = {
     'feedback.incorrect': 'Respuesta incorrecta',
     'feedback.correctAnswer': 'La respuesta correcta es:',
     'feedback.continue': 'CONTINUAR',
+    'feedback.tryAgain': 'Intentar de nuevo',
+    'feedback.askExplanation': 'Pedir explicación',
+    'feedback.correctInSeconds': '¡Correcto en {seconds}s! (+{points} puntos)',
+    'feedback.almostTryAgain': '¡Casi! Inténtalo de nuevo',
+    'feedback.secondChance': 'Tienes una segunda oportunidad (valdrá la mitad de puntos)',
+    'feedback.watchVideo': 'Ver vídeo',
     
     // Congratulations
     'congrats.title': '¡Felicitaciones!',
@@ -297,6 +303,12 @@ const translations: Record<Language, Record<string, string>> = {
     'feedback.incorrect': 'Falsche Antwort',
     'feedback.correctAnswer': 'Die richtige Antwort ist:',
     'feedback.continue': 'WEITER',
+    'feedback.tryAgain': 'Erneut versuchen',
+    'feedback.askExplanation': 'Erklärung anfordern',
+    'feedback.correctInSeconds': 'Richtig in {seconds}s! (+{points} Punkte)',
+    'feedback.almostTryAgain': 'Fast! Versuch es nochmal',
+    'feedback.secondChance': 'Du hast einen zweiten Versuch (halbe Punktzahl)',
+    'feedback.watchVideo': 'Video ansehen',
     
     // Congratulations
     'congrats.title': 'Glückwunsch!',
