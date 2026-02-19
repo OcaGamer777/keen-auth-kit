@@ -314,7 +314,7 @@ Deno.serve(async (req) => {
    - word_translations: must be null
 
 4. IDENTIFY_THE_WORD (ONLY for words/expressions that can be represented by an emoji):
-   - Create ${count-(4*Math.trunc(count / 10)-2*((count-4*Math.trunc(count / 10))/3)} exercises of this type
+   - Create ${count-(4*Math.trunc(count / 10)-2*((count-4*Math.trunc(count / 10))/3))} exercises of this type
    - emoji: a single emoji (REQUIRED, must be representative of the word)
    - statement: "¿Qué es esto?"
    - correct_answer: German word for the emoji

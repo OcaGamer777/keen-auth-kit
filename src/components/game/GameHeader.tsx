@@ -29,7 +29,7 @@ export const GameHeader = ({ currentQuestion, totalQuestions, level, topic, topi
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center hover:opacity-80 transition-opacity"
-            title="Ver vídeo"
+            title={t('feedback.watchVideo')}
           >
             <Youtube className="w-4 h-4 text-red-500" />
           </a>

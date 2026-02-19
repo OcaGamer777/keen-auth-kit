@@ -101,7 +101,7 @@ export const FeedbackModal = ({
             
             <div className="flex-1">
               <h3 className="text-2xl font-bold mb-2">
-                ¡Casi! Inténtalo de nuevo
+                {t('feedback.almostTryAgain')}
               </h3>
               
               {explanation && (
@@ -109,7 +109,7 @@ export const FeedbackModal = ({
               )}
               
               <p className="text-sm text-muted-foreground mt-2">
-                Tienes una segunda oportunidad (valdrá la mitad de puntos)
+                {t('feedback.secondChance')}
               </p>
             </div>
           </div>
@@ -119,7 +119,7 @@ export const FeedbackModal = ({
               onClick={onContinue}
               className="btn-aprender btn-interactive min-w-[200px] text-lg"
             >
-              Intentar de nuevo
+              {t('feedback.tryAgain')}
             </Button>
           </div>
         </div>
@@ -159,7 +159,7 @@ export const FeedbackModal = ({
             <h3 className="text-2xl font-bold mb-2">
               {isCorrect 
                 ? (elapsedSeconds !== undefined && earnedScore !== undefined
-                    ? `¡Correcto en ${elapsedSeconds}s! (+${earnedScore} puntos)`
+                    ? t('feedback.correctInSeconds').replace('{seconds}', String(elapsedSeconds)).replace('{points}', String(earnedScore))
                     : t('feedback.excellent'))
                 : t('feedback.incorrect')
               }
@@ -187,7 +187,7 @@ export const FeedbackModal = ({
               className="gap-2 w-full md:w-auto btn-interactive"
             >
               <MessageCircle className="w-4 h-4" />
-              Pedir explicación
+              {t('feedback.askExplanation')}
             </Button>
           )}
           <Button 
