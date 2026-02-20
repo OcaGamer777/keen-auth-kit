@@ -3,6 +3,7 @@ import { Exercise } from '@/types/exercise';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { shuffle } from '@/lib/utils';
 import { ClickableWord } from './ClickableWord';
+import { Check, X } from 'lucide-react';
 
 interface FillInTheBlankProps {
   exercise: Exercise;
@@ -61,26 +62,31 @@ export const FillInTheBlank = ({ exercise, onAnswer }: FillInTheBlankProps) => {
   };
 
   const getButtonClass = (option: string) => {
-    // If this option was already tried and wrong
     if (wrongAnswers.includes(option)) {
-      return 'border-destructive bg-destructive/10 border-2 opacity-50 cursor-not-allowed';
+      return 'border-destructive bg-destructive/20 border-2 opacity-60 cursor-not-allowed';
     }
     
     if (!hasAnswered) {
-      return option === selectedAnswer 
-        ? 'border-primary bg-primary/10 border-2' 
-        : 'border-border hover:border-primary/50';
+      return 'border-border hover:border-primary/50';
     }
     
     if (option === exercise.correct_answer) {
-      return 'border-success bg-success/10 border-2';
+      return 'border-success bg-success text-success-foreground border-2';
     }
     
     if (option === selectedAnswer && option !== exercise.correct_answer) {
-      return 'border-destructive bg-destructive/10 border-2';
+      return 'border-destructive bg-destructive text-destructive-foreground border-2';
     }
     
     return 'border-border opacity-50';
+  };
+
+  const showIcon = (option: string) => {
+    if (wrongAnswers.includes(option)) return <X className="w-5 h-5 ml-auto flex-shrink-0" />;
+    if (!hasAnswered) return null;
+    if (option === exercise.correct_answer) return <Check className="w-5 h-5 ml-auto flex-shrink-0" />;
+    if (option === selectedAnswer) return <X className="w-5 h-5 ml-auto flex-shrink-0" />;
+    return null;
   };
 
   return (
@@ -110,9 +116,10 @@ export const FillInTheBlank = ({ exercise, onAnswer }: FillInTheBlankProps) => {
               key={index}
               onClick={() => handleSelect(option)}
               disabled={hasAnswered || wrongAnswers.includes(option)}
-              className={`py-2.5 px-4 rounded-2xl border-2 text-lg font-medium transition-all btn-option shadow-sm ${getButtonClass(option)}`}
+              className={`py-2.5 px-4 rounded-2xl border-2 text-lg font-medium transition-all btn-option shadow-sm flex items-center justify-center ${getButtonClass(option)}`}
             >
-              {option}
+              <span className="flex-1">{option}</span>
+              {showIcon(option)}
             </button>
           ))}
         </div>
