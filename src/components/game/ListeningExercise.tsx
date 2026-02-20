@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { Exercise } from '@/types/exercise';
 import { Button } from '@/components/ui/button';
-import { Volume2, Eye, AlertTriangle } from 'lucide-react';
+import { Volume2, Eye, AlertTriangle, Check, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { shuffle } from '@/lib/utils';
 
@@ -179,26 +179,31 @@ export const ListeningExercise = ({ exercise, onAnswer }: ListeningExerciseProps
   };
 
   const getButtonClass = (option: string) => {
-    // If this option was already tried and wrong
     if (wrongAnswers.includes(option)) {
-      return 'border-destructive bg-destructive/10 border-2 opacity-50 cursor-not-allowed';
+      return 'border-destructive/60 bg-gradient-to-r from-destructive/30 to-destructive/10 border-2 opacity-60 cursor-not-allowed';
     }
     
     if (!hasAnswered) {
-      return option === selectedAnswer 
-        ? 'border-primary bg-primary/10 border-2' 
-        : 'border-border hover:border-primary/50';
+      return 'border-border hover:border-primary/50';
     }
     
     if (option === exercise.spanish_translation) {
-      return 'border-success bg-success/10 border-2';
+      return 'border-success bg-gradient-to-r from-success to-success/80 text-success-foreground border-2 shadow-[0_0_15px_hsl(var(--success)/0.4)] ring-2 ring-success/30';
     }
     
     if (option === selectedAnswer && option !== exercise.spanish_translation) {
-      return 'border-destructive bg-destructive/10 border-2';
+      return 'border-destructive bg-gradient-to-r from-destructive to-destructive/80 text-destructive-foreground border-2 shadow-[0_0_15px_hsl(var(--destructive)/0.4)]';
     }
     
     return 'border-border opacity-50';
+  };
+
+  const showIcon = (option: string) => {
+    if (wrongAnswers.includes(option)) return <X className="w-5 h-5 ml-auto flex-shrink-0" />;
+    if (!hasAnswered) return null;
+    if (option === exercise.spanish_translation) return <Check className="w-5 h-5 ml-auto flex-shrink-0" />;
+    if (option === selectedAnswer) return <X className="w-5 h-5 ml-auto flex-shrink-0" />;
+    return null;
   };
 
   return (
@@ -253,9 +258,10 @@ export const ListeningExercise = ({ exercise, onAnswer }: ListeningExerciseProps
               key={index}
               onClick={() => handleSelect(option)}
               disabled={hasAnswered || wrongAnswers.includes(option)}
-              className={`py-2.5 px-4 rounded-2xl border-2 text-lg font-medium transition-all btn-option shadow-sm ${getButtonClass(option)}`}
+              className={`py-2.5 px-4 rounded-2xl border-2 text-lg font-medium transition-all btn-option shadow-md hover:shadow-lg flex items-center justify-center ${getButtonClass(option)}`}
             >
-              {option}
+              <span className="flex-1">{option}</span>
+              {showIcon(option)}
             </button>
           ))}
         </div>
