@@ -116,7 +116,7 @@ export const FillInTheBlank = ({ exercise, onAnswer }: FillInTheBlankProps) => {
               key={index}
               onClick={() => handleSelect(option)}
               disabled={hasAnswered || wrongAnswers.includes(option)}
-              className={`py-2.5 px-4 rounded-2xl border-2 text-lg font-medium transition-all btn-option shadow-sm flex items-center justify-center ${getButtonClass(option)}`}
+              className={`py-2.5 px-4 rounded-2xl border-2 text-lg font-medium transition-all btn-option shadow-md hover:shadow-lg flex items-center justify-center ${getButtonClass(option)}`}
             >
               <span className="flex-1">{option}</span>
               {showIcon(option)}
