@@ -40,6 +40,7 @@ export type Database = {
       }
       daily_rankings: {
         Row: {
+          avatar_icon: string | null
           created_at: string | null
           id: string
           level: number
@@ -48,6 +49,7 @@ export type Database = {
           username: string | null
         }
         Insert: {
+          avatar_icon?: string | null
           created_at?: string | null
           id?: string
           level: number
@@ -56,6 +58,7 @@ export type Database = {
           username?: string | null
         }
         Update: {
+          avatar_icon?: string | null
           created_at?: string | null
           id?: string
           level?: number
@@ -130,6 +133,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          avatar_icon: string | null
           created_at: string
           id: string
           level_progress: Json | null
@@ -138,6 +142,7 @@ export type Database = {
           username: string
         }
         Insert: {
+          avatar_icon?: string | null
           created_at?: string
           id?: string
           level_progress?: Json | null
@@ -146,6 +151,7 @@ export type Database = {
           username: string
         }
         Update: {
+          avatar_icon?: string | null
           created_at?: string
           id?: string
           level_progress?: Json | null
