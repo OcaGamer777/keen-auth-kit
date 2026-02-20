@@ -65,7 +65,7 @@ export const IdentifyWord = ({ exercise, onAnswer, onHintUsed }: IdentifyWordPro
 
   const getButtonClass = (option: string) => {
     if (wrongAnswers.includes(option)) {
-      return 'border-destructive bg-destructive/20 border-2 opacity-60 cursor-not-allowed';
+      return 'border-destructive/60 bg-gradient-to-r from-destructive/30 to-destructive/10 border-2 opacity-60 cursor-not-allowed';
     }
     
     if (!hasAnswered) {
@@ -73,11 +73,11 @@ export const IdentifyWord = ({ exercise, onAnswer, onHintUsed }: IdentifyWordPro
     }
     
     if (option === exercise.correct_answer) {
-      return 'border-success bg-success text-success-foreground border-2';
+      return 'border-success bg-gradient-to-r from-success to-success/80 text-success-foreground border-2 shadow-[0_0_15px_hsl(var(--success)/0.4)] ring-2 ring-success/30';
     }
     
     if (option === selectedAnswer && option !== exercise.correct_answer) {
-      return 'border-destructive bg-destructive text-destructive-foreground border-2';
+      return 'border-destructive bg-gradient-to-r from-destructive to-destructive/80 text-destructive-foreground border-2 shadow-[0_0_15px_hsl(var(--destructive)/0.4)]';
     }
     
     return 'border-border opacity-50';
