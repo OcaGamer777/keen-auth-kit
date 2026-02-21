@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Pencil } from 'lucide-react';
 
 const AVATAR_ICONS = [
   // Caras
@@ -49,11 +49,14 @@ export function AvatarIconPicker({ value, onChange, size = 'md' }: AvatarIconPic
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-all border-2 border-transparent hover:border-primary/50",
+          "relative rounded-2xl bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-all border-2 border-border hover:border-primary/50",
           size === 'md' ? 'w-20 h-20 text-4xl' : 'w-12 h-12 text-2xl'
         )}
       >
         {value}
+        <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground rounded-full p-1 shadow-md">
+          <Pencil size={size === 'md' ? 12 : 10} />
+        </span>
       </button>
 
       {isOpen && (
