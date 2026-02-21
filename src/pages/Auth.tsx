@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Eye, EyeOff } from 'lucide-react';
+import { AvatarIconPicker } from '@/components/AvatarIconPicker';
 
 const signUpSchema = z.object({
   username: z.string().min(3, 'El nombre de usuario debe tener al menos 3 caracteres').max(30, 'El nombre de usuario debe tener máximo 30 caracteres'),
@@ -30,6 +31,7 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
+  const [avatarIcon, setAvatarIcon] = useState('😀');
   const { toast } = useToast();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -84,6 +86,7 @@ const Auth = () => {
           emailRedirectTo: `${window.location.origin}/`,
           data: {
             username: validatedData.username,
+            avatar_icon: avatarIcon,
           },
         },
       });
@@ -304,18 +307,23 @@ const Auth = () => {
             <>
               <form onSubmit={isSignUp ? handleSignUp : handleSignIn} className="space-y-6">
                 {isSignUp && (
-                  <div className="space-y-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                    <Label htmlFor="username" className="text-foreground">{t('auth.username')}</Label>
-                    <Input
-                      id="username"
-                      type="text"
-                      placeholder="tu_usuario"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      className="bg-background/50 border-border focus:border-primary transition-all duration-300"
-                      required
-                    />
-                  </div>
+                  <>
+                    <div className="flex justify-center animate-slide-up">
+                      <AvatarIconPicker value={avatarIcon} onChange={setAvatarIcon} />
+                    </div>
+                    <div className="space-y-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+                      <Label htmlFor="username" className="text-foreground">{t('auth.username')}</Label>
+                      <Input
+                        id="username"
+                        type="text"
+                        placeholder="tu_usuario"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="bg-background/50 border-border focus:border-primary transition-all duration-300"
+                        required
+                      />
+                    </div>
+                  </>
                 )}
 
                 <div className="space-y-2 animate-slide-up" style={{ animationDelay: '0.2s' }}>

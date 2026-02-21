@@ -32,7 +32,8 @@ export const rankingService = {
       level: ranking.level,
       score: ranking.score,
       created_at: ranking.created_at,
-      username: (ranking as any).username || 'Usuario'
+      username: (ranking as any).username || 'Usuario',
+      avatar_icon: (ranking as any).avatar_icon || '😀'
     }));
   },
 
@@ -40,21 +41,22 @@ export const rankingService = {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
 
-    // Get username from profile
+    // Get username and avatar_icon from profile
     const { data: profile } = await supabase
       .from('profiles')
-      .select('username')
+      .select('username, avatar_icon')
       .eq('user_id', user.id)
       .maybeSingle();
 
-    // Insert with username denormalized (cast to bypass type check until types are regenerated)
+    // Insert with username and avatar_icon denormalized
     const { error } = await supabase
       .from('daily_rankings')
       .insert({
         user_id: user.id,
         level,
         score,
-        username: profile?.username || 'Usuario'
+        username: profile?.username || 'Usuario',
+        avatar_icon: (profile as any)?.avatar_icon || '😀'
       } as any);
 
     if (error) throw error;
