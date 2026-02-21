@@ -308,8 +308,8 @@ const Auth = () => {
               <form onSubmit={isSignUp ? handleSignUp : handleSignIn} className="space-y-6">
                 {isSignUp && (
                   <>
-                    <div className="animate-slide-up">
-                      <AvatarIconPicker value={avatarIcon} onChange={setAvatarIcon} showInline />
+                    <div className="flex justify-center animate-slide-up">
+                      <AvatarIconPicker value={avatarIcon} onChange={setAvatarIcon} />
                     </div>
                     <div className="space-y-2 animate-slide-up" style={{ animationDelay: '0.1s' }}>
                       <Label htmlFor="username" className="text-foreground">{t('auth.username')}</Label>
