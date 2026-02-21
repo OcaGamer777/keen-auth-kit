@@ -9,9 +9,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { User, Shield, Crown } from 'lucide-react';
+import { Shield, Crown, User } from 'lucide-react';
 import { Profile as ProfileType } from '@/types/exercise';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { AvatarIconPicker } from '@/components/AvatarIconPicker';
 
 export default function Profile() {
   const { user, loading } = useAuth();
@@ -123,9 +124,21 @@ export default function Profile() {
         <Card className="p-6 bg-card/50 backdrop-blur-xl">
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
-                <User className="w-10 h-10 text-primary" />
-              </div>
+              <AvatarIconPicker
+                value={profile.avatar_icon || '😀'}
+                onChange={async (icon) => {
+                  try {
+                    await supabase
+                      .from('profiles')
+                      .update({ avatar_icon: icon } as any)
+                      .eq('user_id', user.id);
+                    setProfile({ ...profile, avatar_icon: icon });
+                    toast({ title: t('profile.title'), description: '✅' });
+                  } catch (e) {
+                    console.error(e);
+                  }
+                }}
+              />
               <div className="flex-1">
                 <h2 className="text-2xl font-bold">{profile.username}</h2>
                 <div className="flex items-center gap-2 text-muted-foreground">

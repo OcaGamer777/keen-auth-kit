@@ -29,6 +29,7 @@ export interface Profile {
   id: string;
   user_id: string;
   username: string;
+  avatar_icon?: string;
   level_progress: any; // Stored as jsonb in database
   created_at: string;
   updated_at: string;
@@ -50,4 +51,5 @@ export interface DailyRanking {
   score: number;
   created_at: string;
   username?: string;
+  avatar_icon?: string;
 }

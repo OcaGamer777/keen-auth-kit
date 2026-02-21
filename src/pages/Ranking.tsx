@@ -126,7 +126,8 @@ export default function Ranking() {
                                 )}
                               </div>
 
-                              <div className="flex-1">
+                              <div className="flex-1 flex items-center gap-2">
+                                <span className="text-2xl">{ranking.avatar_icon || '😀'}</span>
                                 <p className={`font-semibold ${isCurrentUser ? 'text-primary' : ''}`}>
                                   {ranking.username}
                                   {isCurrentUser && ` (${t('ranking.you')})`}
