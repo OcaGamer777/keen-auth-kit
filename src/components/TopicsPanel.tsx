@@ -5,6 +5,7 @@ import { configService, CONFIG_KEYS } from '@/services/configService';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Youtube, BookOpen, ChevronRight, Star, Lock } from 'lucide-react';
 import { Topic } from '@/types/topic';
+import { PayPalSubscribeButton } from '@/components/PayPalSubscribeButton';
 
 interface TopicsPanelProps {
   disabled?: boolean;
@@ -69,11 +70,14 @@ export function TopicsPanel({ disabled = false }: TopicsPanelProps) {
       </CardHeader>
       <CardContent className="space-y-2">
         {disabled && (
-          <div className="flex items-center gap-2 p-3 rounded-lg bg-primary/10 border border-primary/30 mb-3">
-            <Lock className="w-4 h-4 text-primary flex-shrink-0" />
-            <span className="text-sm text-primary font-medium">
-              Hazte PRO para acceder a todos los temas
-            </span>
+          <div className="space-y-3 mb-3">
+            <div className="flex items-center gap-2 p-3 rounded-lg bg-primary/10 border border-primary/30">
+              <Lock className="w-4 h-4 text-primary flex-shrink-0" />
+              <span className="text-sm text-primary font-medium">
+                Hazte PRO para acceder a todos los temas
+              </span>
+            </div>
+            <PayPalSubscribeButton />
           </div>
         )}
         {topics.map((topic) => {

@@ -13,6 +13,7 @@ import { Lock, Youtube, BookOpen } from 'lucide-react';
 import { Profile } from '@/types/exercise';
 import { Topic } from '@/types/topic';
 import { motion } from 'framer-motion';
+import { PayPalSubscribeButton } from '@/components/PayPalSubscribeButton';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 8 },
@@ -224,6 +225,11 @@ export default function Levels() {
                               ? t('levels.unlockedWithPro')
                               : t('levels.reachTop5OrPro')}
                         </p>
+                        {user && !isPro && (
+                          <div className="mt-2">
+                            <PayPalSubscribeButton />
+                          </div>
+                        )}
                       </>
                     )}
                   </div>
