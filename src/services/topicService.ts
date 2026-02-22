@@ -6,7 +6,7 @@ export const topicService = {
     const { data, error } = await supabase
       .from('topics' as any)
       .select('*')
-      .order('title');
+      .order('order_position', { ascending: true });
 
     if (error) throw error;
     return (data as any[]) || [];
@@ -29,7 +29,7 @@ export const topicService = {
       .from('topics' as any)
       .select('*')
       .eq('is_visible', true)
-      .order('created_at', { ascending: false });
+      .order('order_position', { ascending: true });
 
     if (error) throw error;
     return (data as any[]) || [];

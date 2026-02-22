@@ -377,7 +377,8 @@ export default function Admin() {
         description: newTopicDescription.trim() || null,
         youtube_url: newTopicYoutubeUrl.trim() || null,
         explanation_url: newTopicExplanationUrl.trim() || null,
-        is_visible: false
+        is_visible: false,
+        order_position: topics.length + 1
       });
       toast({
         title: 'Tema creado',
@@ -406,7 +407,8 @@ export default function Admin() {
         description: topic.description,
         youtube_url: topic.youtube_url,
         explanation_url: topic.explanation_url,
-        is_visible: topic.is_visible
+        is_visible: topic.is_visible,
+        order_position: topic.order_position
       });
       toast({
         title: 'Tema actualizado',
@@ -883,7 +885,10 @@ export default function Admin() {
                   <div key={topic.id} className="p-4 bg-secondary rounded-lg">
                     <div className="flex justify-between items-start gap-4">
                       <div className="flex-1">
-                        <h3 className="font-bold text-lg">{topic.title}</h3>
+                <div className="flex items-center gap-2">
+                          <span className="text-xs font-mono bg-primary/20 text-primary px-2 py-0.5 rounded">#{topic.order_position}</span>
+                          <h3 className="font-bold text-lg">{topic.title}</h3>
+                        </div>
                         <p className="text-sm text-muted-foreground mt-1">
                           {topic.description || 'Sin descripción'}
                         </p>
@@ -1336,6 +1341,18 @@ export default function Admin() {
                   />
                   <p className="text-xs text-muted-foreground mt-1">
                     Enlace a una web externa con la explicación detallada del tema.
+                  </p>
+                </div>
+                <div>
+                  <Label>Posición en la lista</Label>
+                  <Input
+                    type="number"
+                    min={0}
+                    value={editingTopic.order_position}
+                    onChange={(e) => setEditingTopic({...editingTopic, order_position: Number(e.target.value)})}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Número que determina el orden del tema en la lista (menor = más arriba).
                   </p>
                 </div>
                 <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">

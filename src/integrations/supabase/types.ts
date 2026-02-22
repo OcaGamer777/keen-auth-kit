@@ -168,6 +168,7 @@ export type Database = {
           explanation_url: string | null
           id: string
           is_visible: boolean | null
+          order_position: number | null
           title: string
           updated_at: string
           youtube_url: string | null
@@ -178,6 +179,7 @@ export type Database = {
           explanation_url?: string | null
           id?: string
           is_visible?: boolean | null
+          order_position?: number | null
           title: string
           updated_at?: string
           youtube_url?: string | null
@@ -188,6 +190,7 @@ export type Database = {
           explanation_url?: string | null
           id?: string
           is_visible?: boolean | null
+          order_position?: number | null
           title?: string
           updated_at?: string
           youtube_url?: string | null
