@@ -70,14 +70,16 @@ export function TopicsPanel({ disabled = false }: TopicsPanelProps) {
       </CardHeader>
       <CardContent className="space-y-2">
         {disabled && (
-          <div className="space-y-3 mb-3 p-3 rounded-lg bg-primary/10 border border-primary/30">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3 p-3 rounded-lg bg-primary/10 border border-primary/30">
             <div className="flex items-center gap-2">
               <Lock className="w-4 h-4 text-primary flex-shrink-0" />
               <span className="text-sm text-primary font-medium">
                 Hazte PRO para acceder a todos los temas
               </span>
             </div>
-            <PayPalSubscribeButton />
+            <div className="flex-shrink-0">
+              <PayPalSubscribeButton />
+            </div>
           </div>
         )}
         {topics.map((topic) => {
