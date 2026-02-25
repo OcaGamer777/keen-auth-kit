@@ -39,6 +39,7 @@ export function PayPalSubscribeButton() {
           color: 'blue',
           layout: 'horizontal',
           label: 'subscribe',
+          tagline: false,
         },
         createSubscription: (_data: any, actions: any) => {
           return actions.subscription.create({ plan_id: PLAN_ID });
