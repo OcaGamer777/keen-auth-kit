@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { toast } from 'sonner';
 
-const PAYPAL_CLIENT_ID = 'AVyX8gMPQ18KXMIrwf6aIs9eRJ1VKesJ-QYfHF8cWE1vRwZ_sqh9T8KM5M7XdoURqrAkQ7ezLtD3KMwu';
+const PAYPAL_CLIENT_ID = 'sb'; // Sandbox mode – change back to production ID when done testing
 const PLAN_ID = 'P-2SG07300U6287153VNGNWHRY';
 
 let sdkPromise: Promise<void> | null = null;
