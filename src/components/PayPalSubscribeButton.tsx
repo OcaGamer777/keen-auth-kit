@@ -51,5 +51,5 @@ export function PayPalSubscribeButton() {
     }).catch((err) => console.error('PayPal SDK error:', err));
   }, []);
 
-  return <div ref={containerRef} className="w-full max-w-[300px] mx-auto" />;
+  return <div ref={containerRef} className="w-full max-w-[300px] mx-auto [&_iframe]:!rounded-full [&_iframe]:!overflow-hidden dark:[&_iframe]:!bg-transparent" style={{ colorScheme: 'light' }} />;
 }
