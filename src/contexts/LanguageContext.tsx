@@ -49,7 +49,7 @@ const translations: Record<Language, Record<string, string>> = {
     'levels.play': 'Jugar',
     'levels.loginToUnlock': 'Inicia sesión para desbloquear',
     'levels.unlockedWithPro': 'Desbloqueado con PRO',
-    'levels.reachTop5OrPro': 'Alcanza el top 5 en el nivel anterior o hazte usuario PRO por sólo 1,99€',
+    'levels.reachTop5OrPro': 'Alcanza el top 5 en el nivel anterior o hazte usuario PRO por sólo 1,99€/mes',
     
     // Game
     'game.exercise': 'Ejercicio',
@@ -257,7 +257,7 @@ const translations: Record<Language, Record<string, string>> = {
     'levels.play': 'Spielen',
     'levels.loginToUnlock': 'Melde dich an, um freizuschalten',
     'levels.unlockedWithPro': 'Mit PRO freigeschaltet',
-    'levels.reachTop5OrPro': 'Erreiche die Top 5 im vorherigen Niveau oder werde PRO-Benutzer für nur 1,99€',
+    'levels.reachTop5OrPro': 'Erreiche die Top 5 im vorherigen Niveau oder werde PRO-Benutzer für nur 1,99€/Monat',
     
     // Game
     'game.exercise': 'Übung',
